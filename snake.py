@@ -7,6 +7,7 @@ DOWN = 270
 RIGHT = 0
 LEFT = 180
 
+
 class Snake:
 
     def __init__(self):
@@ -16,12 +17,18 @@ class Snake:
 
     def create_snake(self):
         for position in STARTING_POSITION:
-            kai = Turtle()
-            kai.color("white")
-            kai.shape("square")
-            kai.penup()
-            kai.goto(position)
-            self.cobra.append(kai)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        kai = Turtle()
+        kai.color("white")
+        kai.shape("square")
+        kai.penup()
+        kai.goto(position)
+        self.cobra.append(kai)
+
+    def extend(self):
+        self.add_segment(self.cobra[-1].position())
 
     def move(self):
         for coco in range(len(self.cobra)-1, 0, -1):
